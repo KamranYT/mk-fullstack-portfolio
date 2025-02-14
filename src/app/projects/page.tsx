@@ -17,24 +17,24 @@ const projects = [
   },
   {
     title: "Project 2",
-    description: "Description of project 1",
-    image: "/project1.jpg",
+    description: "Description of project 2",
+    image: "/2nd.jpg",
     technologies: ["React", "Node.js", "MongoDB"],
     demoLink: "https://demo1.com",
     codeLink: "https://github.com/yourusername/project1"
   },
   {
     title: "Project 3",
-    description: "Description of project 1",
-    image: "/project1.jpg",
+    description: "Description of project 3",
+    image: "/2nd.jpg",
     technologies: ["React", "Node.js", "MongoDB"],
     demoLink: "https://demo1.com",
     codeLink: "https://github.com/yourusername/project1"
   },
   {
     title: "Project 4",
-    description: "Description of project 1",
-    image: "/project1.jpg",
+    description: "Description of project 4",
+    image: "/2nd.jpg",
     technologies: ["React", "Node.js", "MongoDB"],
     demoLink: "https://demo1.com",
     codeLink: "https://github.com/yourusername/project1"
