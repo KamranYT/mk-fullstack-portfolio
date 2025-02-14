@@ -1,101 +1,311 @@
-import Image from "next/image";
+"use client";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import {
+  FiArrowRight,
+  FiGithub,
+  FiTwitter,
+  FiLinkedin,
+  FiFacebook,
+} from "react-icons/fi";
+import { Card, CardContent } from "@/components/ui/card";
+// import { SiPrisma, SiMongodb, SiPostgresql, SiDocker } from "react-icons/si";
+import { FaCode, FaServer, FaMobileAlt } from "react-icons/fa";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main className="flex flex-col min-h-screen">
+      {/* Hero Section */}
+      <section className="flex flex-col items-center justify-center min-h-screen text-center px-6 bg-gradient-to-b from-background to-muted">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="max-w-3xl"
+        >
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60">
+            Hi, I&apos;m Muhammad Kamran
+          </h1>
+          <p className="text-xl text-muted-foreground mb-8">
+            A Full Stack Developer crafting exceptional digital experiences
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button asChild size="lg">
+              <Link href="/projects">
+                View My Work <FiArrowRight className="ml-2" />
+              </Link>
+            </Button>
+            <Button variant="outline" size="lg" asChild>
+              <Link href="/contact">Contact Me</Link>
+            </Button>
+          </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          <div className="flex justify-center gap-6 mt-8">
+            <motion.a
+              whileHover={{ y: -3 }}
+              href="https://github.com/KamranYT"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary"
+            >
+              <FiGithub size={24} />
+            </motion.a>
+            <motion.a
+              whileHover={{ y: -3 }}
+              href="https://web.facebook.com/profile.php?id=100080963443012"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary"
+            >
+              <FiFacebook size={24} />
+            </motion.a>
+            <motion.a
+              whileHover={{ y: -3 }}
+              href="https://www.linkedin.com/in/muhammad-kamran-916b752b4/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary"
+            >
+              <FiLinkedin size={24} />
+            </motion.a>
+            <motion.a
+              whileHover={{ y: -3 }}
+              href="https://www.linkedin.com/in/muhammad-kamran-916b752b4/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary"
+            >
+              <FiTwitter size={24} />
+            </motion.a>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Statistics Section */}
+      <section className="py-16 bg-background">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { label: "Years Experience", value: "3+" },
+              { label: "Projects Completed", value: "20+" },
+              { label: "Happy Clients", value: "15+" },
+              { label: "Technologies", value: "10+" },
+            ].map((stat) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="text-center"
+              >
+                <h3 className="text-3xl font-bold text-primary mb-2">{stat.value}</h3>
+                <p className="text-muted-foreground">{stat.label}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20 bg-muted">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl font-bold text-center mb-12"
+          >
+            What I Do
+          </motion.h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <FaCode className="w-8 h-8" />,
+                title: "Frontend Development",
+                description: "Creating responsive and interactive user interfaces with modern frameworks",
+              },
+              {
+                icon: <FaServer className="w-8 h-8" />,
+                title: "Backend Development",
+                description: "Building robust server-side applications and APIs",
+              },
+              {
+                icon: <FaMobileAlt className="w-8 h-8" />,
+                title: "Mobile Development",
+                description: "Developing cross-platform mobile applications",
+              },
+            ].map((service) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-center"
+              >
+                <Card>
+                  <CardContent className="p-6">
+                    <div className="flex justify-center mb-4 text-primary">
+                      {service.icon}
+                    </div>
+                    <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+                    <p className="text-muted-foreground">{service.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Projects */}
+      <section className="py-20 bg-muted/50">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl font-bold text-center mb-12"
+          >
+            Featured Projects
+          </motion.h2>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {[1, 2].map((project) => (
+              <motion.div
+                key={project}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <Card>
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-bold mb-2">Project Name</h3>
+                    <p className="text-muted-foreground mb-4">
+                      Project description goes here...
+                    </p>
+                    <div className="flex gap-4">
+                      <Button variant="outline" size="sm">
+                        View Demo
+                      </Button>
+                      <Button variant="ghost" size="sm">
+                        Source Code
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Enhanced Skills Section */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl font-bold text-center mb-12"
+          >
+            Skills & Technologies
+          </motion.h2>
+
+          <Tabs defaultValue="frontend" className="w-full">
+            <TabsList className="grid w-full grid-cols-3 mb-8">
+              <TabsTrigger value="frontend">Frontend</TabsTrigger>
+              <TabsTrigger value="backend">Backend</TabsTrigger>
+              <TabsTrigger value="tools">Tools & Others</TabsTrigger>
+            </TabsList>
+            <TabsContent value="frontend">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                {["React", "Next.js", "TypeScript", "TailwindCSS"].map((skill) => (
+                  <SkillCard key={skill} name={skill} />
+                ))}
+              </div>
+            </TabsContent>
+            <TabsContent value="backend">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                {["Node.js", "Prisma", "MongoDB", "PostgreSQL"].map((skill) => (
+                  <SkillCard key={skill} name={skill} />
+                ))}
+              </div>
+            </TabsContent>
+            <TabsContent value="tools">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                {["Git", "Docker", "AWS", "Firebase"].map((skill) => (
+                  <SkillCard key={skill} name={skill} />
+                ))}
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </section>
+
+      {/* Testimonials Section - moved outside hero section */}
+      <section className="py-20 bg-muted">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl font-bold text-center mb-12"
+          >
+            What Clients Say
+          </motion.h2>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                name: "John Doe",
+                role: "CEO, Tech Company",
+                content: "Exceptional work and great communication throughout the project.",
+              },
+              {
+                name: "Jane Smith",
+                role: "Product Manager",
+                content: "Delivered high-quality code and met all deadlines consistently.",
+              },
+            ].map((testimonial) => (
+              <motion.div
+                key={testimonial.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <Card>
+                  <CardContent className="p-6">
+                    <p className="mb-4 italic">{testimonial.content}</p>
+                    <div>
+                      <p className="font-bold">{testimonial.name}</p>
+                      <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
+
+const SkillCard = ({ name }: { name: string }) => (
+  <motion.div
+    initial={{ opacity: 0, scale: 0.9 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    viewport={{ once: true }}
+    whileHover={{ y: -5 }}
+  >
+    <Card>
+      <CardContent className="flex items-center justify-center p-6">
+        <span className="font-medium">{name}</span>
+      </CardContent>
+    </Card>
+  </motion.div>
+);
+
