@@ -1,113 +1,62 @@
-import { FaGithub, FaLinkedinIn, FaTwitter, FaEnvelope } from 'react-icons/fa';
+'use client';
 import Link from 'next/link';
+import { FiGithub, FiTwitter, FiLinkedin, FiFacebook } from 'react-icons/fi';
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-gray-50 to-gray-100">
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        {/* Newsletter Section */}
-        <div className="mb-12 text-center">
-          <h3 className="text-2xl font-bold mb-4">Stay Updated</h3>
-          <p className="text-gray-600 mb-6">Subscribe to my newsletter for the latest updates</p>
-          <form className="max-w-md mx-auto flex gap-2">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <button
-              type="submit"
-              className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300"
-            >
-              Subscribe
-            </button>
-          </form>
-        </div>
-
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-          {/* About Section */}
-          <div className="md:col-span-2">
-            <h3 className="text-xl font-bold mb-4">About Me</h3>
-            <p className="text-gray-600 mb-4">
-              A passionate developer focused on creating interactive and user-friendly applications.
-              Specialized in modern web technologies and committed to delivering high-quality solutions.
+    <footer className="border-t bg-background">
+      <div className="max-w-6xl mx-auto px-6 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Brand Section */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-bold">Muhammad Kamran</h3>
+            <p className="text-muted-foreground">
+              Full Stack Developer crafting digital experiences
             </p>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link href="/about" className="text-gray-600 hover:text-blue-600 transition duration-300">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/projects" className="text-gray-600 hover:text-blue-600 transition duration-300">
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="text-gray-600 hover:text-blue-600 transition duration-300">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-gray-600 hover:text-blue-600 transition duration-300">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link href="/resources" className="text-gray-600 hover:text-blue-600 transition duration-300">
-                  Resources
-                </Link>
-              </li>
-            </ul>
+          <div className="space-y-4">
+            <h3 className="text-lg font-bold">Quick Links</h3>
+            <nav className="flex flex-col space-y-2">
+              <Link href="/about" className="text-muted-foreground hover:text-primary">About</Link>
+              <Link href="/projects" className="text-muted-foreground hover:text-primary">Projects</Link>
+              <Link href="/blog" className="text-muted-foreground hover:text-primary">Blog</Link>
+              <Link href="/contact" className="text-muted-foreground hover:text-primary">Contact</Link>
+            </nav>
           </div>
 
-          {/* Connect Section */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">Connect</h3>
-            <div className="flex flex-col space-y-3">
-              <a
-                href="https://github.com/yourusername"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition duration-300"
-              >
-                <FaGithub size={20} /> GitHub
+          {/* Contact Info */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-bold">Contact</h3>
+            <div className="space-y-2 text-muted-foreground">
+              <p>Karachi, Pakistan</p>
+              <p>mk7275374@gmail.com</p>
+            </div>
+          </div>
+
+          {/* Social Links */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-bold">Follow Me</h3>
+            <div className="flex space-x-4">
+              <a href="https://github.com/KamranYT" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+                <FiGithub size={20} />
               </a>
-              <a
-                href="https://linkedin.com/in/yourusername"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition duration-300"
-              >
-                <FaLinkedinIn size={20} /> LinkedIn
+              <a href="https://web.facebook.com/profile.php?id=100080963443012" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+                <FiFacebook size={20} />
               </a>
-              <a
-                href="https://twitter.com/yourusername"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition duration-300"
-              >
-                <FaTwitter size={20} /> Twitter
+              <a href="https://www.linkedin.com/in/muhammad-kamran-916b752b4/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+                <FiLinkedin size={20} />
               </a>
-              <a
-                href="mailto:your.email@example.com"
-                className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition duration-300"
-              >
-                <FaEnvelope size={20} /> Email
+              <a href="https://x.com/MuhammadKa31378?t=Icz5q6U4T9WSdL7h15Y7Wg&s=09" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+                <FiTwitter size={20} />
               </a>
             </div>
           </div>
         </div>
 
-        {/* Copyright Section */}
-        <div className="mt-12 pt-8 border-t border-gray-200 text-center text-gray-600">
-          <p>© {new Date().getFullYear()} Your Name. All rights reserved.</p>
+        <div className="mt-8 pt-8 border-t text-center text-muted-foreground">
+          <p>&copy; {new Date().getFullYear()} Muhammad Kamran. All rights reserved.</p>
         </div>
       </div>
     </footer>

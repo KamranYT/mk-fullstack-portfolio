@@ -8,17 +8,31 @@ import {
   FiTwitter,
   FiLinkedin,
   FiFacebook,
+  FiSun,
+  FiMoon,
 } from "react-icons/fi";
 import { Card, CardContent } from "@/components/ui/card";
 // import { SiPrisma, SiMongodb, SiPostgresql, SiDocker } from "react-icons/si";
 import { FaCode, FaServer, FaMobileAlt } from "react-icons/fa";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useTheme } from "next-themes";
 
 export default function Home() {
+  const { theme, setTheme } = useTheme();
+
   return (
     <main className="flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center min-h-screen text-center px-6 bg-gradient-to-b from-background to-muted">
+        <motion.button
+          className="fixed top-4 right-4 p-2 rounded-full bg-background/80 backdrop-blur-sm border border-border"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        >
+          {theme === "dark" ? <FiSun size={20} /> : <FiMoon size={20} />}
+        </motion.button>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

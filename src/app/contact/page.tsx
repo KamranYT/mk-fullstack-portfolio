@@ -51,7 +51,7 @@ export default function Contact() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen pt-24 pb-12 bg-gray-50"
+      className="min-h-screen pt-24 pb-12 bg-background"
     >
       <div className="max-w-5xl mx-auto px-6">
         <motion.h1 

@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { FiMenu, FiX } from 'react-icons/fi';
+import { FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi';
 import { Button } from '@/components/ui/button';
 import {
   NavigationMenu,
@@ -10,11 +10,19 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useTheme } from 'next-themes';
 
 export default function Header() {
   const pathname = usePathname();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Wait until mounted to show theme toggle
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const navItems = [
     { href: '/', label: 'Home' },
@@ -37,7 +45,7 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:block">
             <NavigationMenu>
-              <NavigationMenuList>
+              <NavigationMenuList className="flex items-center gap-2">
                 {navItems.map((item) => (
                   <NavigationMenuItem key={item.href}>
                     <Link href={item.href} legacyBehavior passHref>
@@ -51,19 +59,42 @@ export default function Header() {
                     </Link>
                   </NavigationMenuItem>
                 ))}
+                {mounted && (
+                  <NavigationMenuItem>
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="p-2 rounded-full hover:bg-accent"
+                      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                    >
+                      {theme === "dark" ? <FiSun size={20} /> : <FiMoon size={20} />}
+                    </motion.button>
+                  </NavigationMenuItem>
+                )}
               </NavigationMenuList>
             </NavigationMenu>
           </nav>
 
           {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-          </Button>
+          <div className="flex items-center gap-2 md:hidden">
+            {mounted && (
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="p-2 rounded-full hover:bg-accent"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              >
+                {theme === "dark" ? <FiSun size={20} /> : <FiMoon size={20} />}
+              </motion.button>
+            )}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+            </Button>
+          </div>
         </div>
       </div>
 
