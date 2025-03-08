@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function StatisticsSection() {
   const stats = [
-    { label: "Years Experience", value: "3+" },
+    { label: "Years Experience", value: "2+" },
     { label: "Projects Completed", value: "20+" },
     { label: "Happy Clients", value: "15+" },
     { label: "Technologies", value: "10+" },

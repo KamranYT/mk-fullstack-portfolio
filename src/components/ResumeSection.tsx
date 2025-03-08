@@ -27,9 +27,9 @@ export default function ResumeSection() {
             <CardContent className="p-6">
               <h3 className="text-xl font-bold mb-4">Latest Experience</h3>
               <div className="space-y-2">
-                <h4 className="font-bold">Senior Full Stack Developer</h4>
+                <h4 className="font-bold">Senior Frontend Developer</h4>
                 <p className="text-muted-foreground">Company Name</p>
-                <p className="text-sm text-muted-foreground">2021 - Present</p>
+                <p className="text-sm text-muted-foreground">2024 - Present</p>
               </div>
             </CardContent>
           </Card>
@@ -39,8 +39,8 @@ export default function ResumeSection() {
               <h3 className="text-xl font-bold mb-4">Education</h3>
               <div className="space-y-2">
                 <h4 className="font-bold">Bachelor in Computer Science</h4>
-                <p className="text-muted-foreground">University Name</p>
-                <p className="text-sm text-muted-foreground">2019 - 2023</p>
+                <p className="text-muted-foreground">Governor Sindh Initiative (GIACI)</p>
+                <p className="text-sm text-muted-foreground">2024 - Present</p>
               </div>
             </CardContent>
           </Card>

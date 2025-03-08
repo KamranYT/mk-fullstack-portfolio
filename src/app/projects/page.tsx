@@ -8,38 +8,53 @@ import Image from "next/image";
 
 const projects = [
   {
-    title: "Project 1",
+    title: "Foodi Website",
     description: "Description of project 1",
     image: "/car2.png",
-    technologies: ["React", "Node.js", "MongoDB"],
+    technologies: ["React", "Next.Js", "Tailwind CSS"],
     demoLink: "https://demo1.com",
     codeLink: "https://github.com/yourusername/project1"
   },
   {
-    title: "Project 2",
+    title: "Hekto Furniture",
     description: "Description of project 2",
     image: "/2nd.jpg",
-    technologies: ["React", "Node.js", "MongoDB"],
+    technologies: ["React", "Next.js", "Tailwind CSS"],
     demoLink: "https://demo1.com",
     codeLink: "https://github.com/yourusername/project1"
   },
   {
-    title: "Project 3",
+    title: "Growth Mindset",
     description: "Description of project 3",
     image: "/2nd.jpg",
-    technologies: ["React", "Node.js", "MongoDB"],
+    technologies: ["Python", "Streamlit"],
     demoLink: "https://demo1.com",
     codeLink: "https://github.com/yourusername/project1"
   },
   {
-    title: "Project 4",
+    title: "Unit Converter",
     description: "Description of project 4",
     image: "/2nd.jpg",
-    technologies: ["React", "Node.js", "MongoDB"],
+    technologies: ["Python", "UV", "Streamlit"],
     demoLink: "https://demo1.com",
     codeLink: "https://github.com/yourusername/project1"
   },
-  // Add more projects
+  {
+    title: "Password Strength Meter",
+    description: "Description of project 4",
+    image: "/2nd.jpg",
+    technologies: ["Python", "UV", "Streamlit"],
+    demoLink: "https://demo1.com",
+    codeLink: "https://github.com/yourusername/project1"
+  },
+  {
+    title: "ATM Machine",
+    description: "Description of project 4",
+    image: "/atm.png",
+    technologies: ["Python", "UV", "Streamlit"],
+    demoLink: "https://demo1.com",
+    codeLink: "https://github.com/yourusername/project1"
+  },
 ];
 
 export default function Projects() {

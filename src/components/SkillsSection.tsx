@@ -5,7 +5,7 @@ import { SkillCard } from "@/components/SkillCard";
 
 export default function SkillsSection() {
   return (
-    <section className="py-16 bg-muted">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

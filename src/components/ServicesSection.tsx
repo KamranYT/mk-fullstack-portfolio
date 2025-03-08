@@ -25,7 +25,7 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section className="py-20 bg-muted">
+    <section className="py-20 bg-background">
       <div className="max-w-6xl mx-auto px-6">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
