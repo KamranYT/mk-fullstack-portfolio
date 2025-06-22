@@ -21,31 +21,31 @@ const projects = [
     image: "/2nd.jpg",
     technologies: ["React", "Next.js", "Tailwind CSS"],
     demoLink: "https://demo1.com",
-    codeLink: "https://github.com/yourusername/project1"
+    codeLink: "https://github.com/KamranYT/hack3-.git"
   },
   {
     title: "Growth Mindset",
     description: "Description of project 3",
     image: "/2nd.jpg",
     technologies: ["Python", "Streamlit"],
-    demoLink: "https://demo1.com",
-    codeLink: "https://github.com/yourusername/project1"
+    demoLink: "https://github.com/KamranYT/python/blob/main/streamlit-apps/data-sweeper.py",
+    codeLink: "https://mk-data-sweeper.streamlit.app/"
   },
   {
     title: "Unit Converter",
     description: "Description of project 4",
     image: "/2nd.jpg",
     technologies: ["Python", "UV", "Streamlit"],
-    demoLink: "https://demo1.com",
-    codeLink: "https://github.com/yourusername/project1"
+    demoLink: "https://mk-unit-converter.streamlit.app/",
+    codeLink: "https://github.com/KamranYT/python/blob/main/streamlit-apps/Unit_Converter.py"
   },
   {
     title: "Password Strength Meter",
     description: "Description of project 4",
-    image: "/2nd.jpg",
+    image: "/password-meter.png",
     technologies: ["Python", "UV", "Streamlit"],
-    demoLink: "https://demo1.com",
-    codeLink: "https://github.com/yourusername/project1"
+    demoLink: "https://mk-password-generator.streamlit.app/",
+    codeLink: "https://github.com/KamranYT/password-strength-meter.git"
   },
   {
     title: "ATM Machine",
@@ -54,6 +54,14 @@ const projects = [
     technologies: ["Python", "UV", "Streamlit"],
     demoLink: "https://demo1.com",
     codeLink: "https://github.com/yourusername/project1"
+  },
+  {
+    title: "Word Count",
+    description: "Description of project 4",
+    image: "/word-count.png",
+    technologies: ["Python", "UV", "Streamlit"],
+    demoLink: "https://mk-word-count.streamlit.app/",
+    codeLink: "https://github.com/KamranYT/python/blob/main/streamlit-apps/word_count_app.py"
   },
 ];
 

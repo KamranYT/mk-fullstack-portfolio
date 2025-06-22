@@ -35,23 +35,23 @@ export default function Header() {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-background/80 backdrop-blur-sm z-50 border-b">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-2xl font-bold">
-            Muhammad
+          <Link href="/" className="text-xl font-bold">
+            MK
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:block">
             <NavigationMenu>
-              <NavigationMenuList className="flex items-center gap-2">
+              <NavigationMenuList>
                 {navItems.map((item) => (
                   <NavigationMenuItem key={item.href}>
                     <Link href={item.href} legacyBehavior passHref>
                       <NavigationMenuLink
-                        className={`px-4 py-2 hover:text-primary transition-colors ${
-                          isActive(item.href) ? 'text-primary font-medium' : ''
+                        className={`px-3 py-2 text-sm font-medium transition-colors hover:text-primary ${
+                          isActive(item.href) ? 'text-primary' : 'text-muted-foreground'
                         }`}
                       >
                         {item.label}
@@ -59,69 +59,72 @@ export default function Header() {
                     </Link>
                   </NavigationMenuItem>
                 ))}
-                {mounted && (
-                  <NavigationMenuItem>
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="p-2 rounded-full hover:bg-accent"
-                      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                    >
-                      {theme === "dark" ? <FiSun size={20} /> : <FiMoon size={20} />}
-                    </motion.button>
-                  </NavigationMenuItem>
-                )}
               </NavigationMenuList>
             </NavigationMenu>
           </nav>
 
-          {/* Mobile Menu Button */}
-          <div className="flex items-center gap-2 md:hidden">
+          <div className="flex items-center gap-4">
+            {/* Theme Toggle - Only render when mounted */}
             {mounted && (
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="p-2 rounded-full hover:bg-accent"
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                className="hidden md:flex"
               >
-                {theme === "dark" ? <FiSun size={20} /> : <FiMoon size={20} />}
-              </motion.button>
+                {theme === 'dark' ? <FiSun className="h-4 w-4" /> : <FiMoon className="h-4 w-4" />}
+              </Button>
             )}
+
+            {/* Mobile Menu Button */}
             <Button
               variant="ghost"
-              size="icon"
+              size="sm"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden"
             >
-              {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+              {isMobileMenuOpen ? <FiX className="h-4 w-4" /> : <FiMenu className="h-4 w-4" />}
             </Button>
           </div>
         </div>
-      </div>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="md:hidden border-t"
-        >
-          <nav className="flex flex-col p-4 bg-background">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`px-4 py-2 hover:text-primary transition-colors ${
-                  isActive(item.href) ? 'text-primary font-medium' : ''
-                }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        </motion.div>
-      )}
+        {/* Mobile Navigation */}
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden border-t border-border"
+          >
+            <nav className="py-4 space-y-2">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`block px-3 py-2 text-sm font-medium transition-colors hover:text-primary ${
+                    isActive(item.href) ? 'text-primary' : 'text-muted-foreground'
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              {/* Mobile Theme Toggle */}
+              {mounted && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                  className="w-full justify-start"
+                >
+                  {theme === 'dark' ? <FiSun className="h-4 w-4 mr-2" /> : <FiMoon className="h-4 w-4 mr-2" />}
+                  {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+                </Button>
+              )}
+            </nav>
+          </motion.div>
+        )}
+      </div>
     </header>
   );
 }

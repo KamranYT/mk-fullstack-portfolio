@@ -14,14 +14,18 @@ export default function Contact() {
     type: 'success' | 'error' | null;
     message: string;
   }>({ type: null, message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   async function handleSubmit(formData: FormData) {
+    setIsSubmitting(true);
+    setStatus({ type: null, message: '' });
+
     try {
       const data = {
         name: formData.get('name'),
         email: formData.get('email'),
         message: formData.get('message'),
-        to: 'mk7275374@gmail.com', // Your email address
+        to: 'mk7275374@gmail.com',
       };
 
       const response = await fetch('/api/send-email', {
@@ -32,17 +36,31 @@ export default function Contact() {
         body: JSON.stringify(data),
       });
 
-      if (!response.ok) throw new Error('Failed to send email');
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send email');
+      }
       
       setStatus({ 
         type: 'success', 
-        message: 'Thank you for your message! I will get back to you soon.' 
+        message: 'Thank you for your message! I will get back to you within 24 hours.' 
       });
-    } catch {
+
+      // Reset form after successful submission
+      const form = document.querySelector('form') as HTMLFormElement;
+      if (form) {
+        form.reset();
+      }
+
+    } catch (error) {
+      console.error('Contact form error:', error);
       setStatus({ 
         type: 'error', 
-        message: 'There was an error sending your message. Please try again.' 
+        message: error instanceof Error ? error.message : 'There was an error sending your message. Please try again.' 
       });
+    } finally {
+      setIsSubmitting(false);
     }
   }
 
@@ -208,9 +226,14 @@ export default function Contact() {
               <CardContent>
                 <form action={handleSubmit} className="space-y-6">
                   {status.message && (
-                    <Alert variant={status.type === 'success' ? 'default' : 'destructive'}>
-                      <AlertDescription>{status.message}</AlertDescription>
-                    </Alert>
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                    >
+                      <Alert variant={status.type === 'success' ? 'default' : 'destructive'}>
+                        <AlertDescription>{status.message}</AlertDescription>
+                      </Alert>
+                    </motion.div>
                   )}
                   
                   <motion.div 
@@ -220,7 +243,14 @@ export default function Contact() {
                     className="space-y-2"
                   >
                     <label htmlFor="name" className="text-sm font-medium">Name</label>
-                    <Input type="text" id="name" name="name" required placeholder="Your name" />
+                    <Input 
+                      type="text" 
+                      id="name" 
+                      name="name" 
+                      required 
+                      placeholder="Your name"
+                      disabled={isSubmitting}
+                    />
                   </motion.div>
                   
                   <motion.div 
@@ -230,7 +260,14 @@ export default function Contact() {
                     className="space-y-2"
                   >
                     <label htmlFor="email" className="text-sm font-medium">Email</label>
-                    <Input type="email" id="email" name="email" required placeholder="your@email.com" />
+                    <Input 
+                      type="email" 
+                      id="email" 
+                      name="email" 
+                      required 
+                      placeholder="your@email.com"
+                      disabled={isSubmitting}
+                    />
                   </motion.div>
                   
                   <motion.div 
@@ -240,15 +277,26 @@ export default function Contact() {
                     className="space-y-2"
                   >
                     <label htmlFor="message" className="text-sm font-medium">Message</label>
-                    <Textarea id="message" name="message" required placeholder="Your message" rows={6} />
+                    <Textarea 
+                      id="message" 
+                      name="message" 
+                      required 
+                      placeholder="Your message" 
+                      rows={6}
+                      disabled={isSubmitting}
+                    />
                   </motion.div>
                   
                   <motion.div
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <Button type="submit" className="w-full">
-                      Send Message
+                    <Button 
+                      type="submit" 
+                      className="w-full"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
                     </Button>
                   </motion.div>
                 </form>

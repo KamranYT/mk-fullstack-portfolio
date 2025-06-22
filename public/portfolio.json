@@ -1,0 +1,73 @@
+{
+  "name": "Kamran",
+  "about": "Frontend Developer skilled in React, Next.js, Tailwind CSS, and TypeScript. Passionate about building modern, responsive UIs.",
+  "projects": [
+    {
+      "title": "Foodi",
+      "description": "E-commerce food website built with Next.js and Tailwind.",
+      "techStack": ["Next.js", "Tailwind", "CSS"]
+    },
+    {
+      "title": "ReXon Solution",
+      "description": "Animated company portfolio website with engaging motion effects.",
+      "techStack": ["Next.js", "Framer Motion"]
+    },
+    {
+      "title": "AI Resume Builder",
+      "description": "A smart resume builder powered by OpenAI Agent SDK that formats data into Markdown, HTML, and PDF.",
+      "techStack": ["Next.js", "OpenAI Agent SDK", "Tailwind"]
+    },
+    {
+      "title": "Password Strength Meter",
+      "description": "Streamlit app that checks password strength and supports multiple languages.",
+      "techStack": ["Python", "Streamlit", "i18n"]
+    },
+    {
+      "title": "Unit Converter App",
+      "description": "A lightweight unit converter built using Python and Streamlit.",
+      "techStack": ["Python", "Streamlit"]
+    }
+  ],
+  "skills": [
+    "React",
+    "Next.js",
+    "Tailwind CSS",
+    "TypeScript",
+    "Framer Motion",
+    "HTML",
+    "CSS",
+    "Streamlit",
+    "Python",
+    "OpenAI Agent SDK"
+  ],
+  "experience": [
+    {
+      "role": "Frontend Developer Intern",
+      "company": "TechSoft Solutions",
+      "duration": "Jan 2024 - Jun 2024",
+      "description": "Built UI components using React and improved website performance by 30% through optimization techniques."
+    }
+  ],
+  "certifications": [
+    {
+      "title": "Meta Front-End Developer Certificate",
+      "issuer": "Coursera",
+      "year": 2024
+    },
+    {
+      "title": "Responsive Web Design",
+      "issuer": "freeCodeCamp",
+      "year": 2023
+    }
+  ],
+  "resume": {
+    "summary": "Motivated and detail-oriented Frontend Developer with hands-on experience in building dynamic and responsive web applications. Strong in modern JavaScript frameworks and passionate about creating seamless user experiences.",
+    "availableFormats": ["Markdown", "PDF", "HTML"]
+  },
+  "contact": {
+    "email": "youremail@example.com",
+    "linkedin": "https://linkedin.com/in/your-profile",
+    "github": "https://github.com/KamranYT",
+    "twitter": "https://twitter.com/your-profile"
+  }
+}

@@ -12,20 +12,30 @@ import {
   FiMoon,
 } from "react-icons/fi";
 import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 
 export default function HeroSection() {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // Wait until mounted to show theme toggle
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <section className="flex flex-col items-center justify-center min-h-screen text-center px-6 bg-gradient-to-b from-background to-muted">
-      <motion.button
-        className="fixed top-4 right-4 p-2 rounded-full bg-background/80 backdrop-blur-sm border border-border"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      >
-        {theme === "dark" ? <FiSun size={20} /> : <FiMoon size={20} />}
-      </motion.button>
+      {/* Theme Toggle - Only render when mounted */}
+      {mounted && (
+        <motion.button
+          className="fixed top-4 right-4 p-2 rounded-full bg-background/80 backdrop-blur-sm border border-border"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        >
+          {theme === "dark" ? <FiSun size={20} /> : <FiMoon size={20} />}
+        </motion.button>
+      )}
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
