@@ -3,6 +3,25 @@ import { OpenAI } from 'openai';
 import { readFileSync } from 'fs';
 import path from 'path';
 
+interface PortfolioProject {
+  title: string;
+  description: string;
+  techStack: string[];
+}
+
+interface Experience {
+  role: string;
+  company: string;
+  duration: string;
+  description: string;
+}
+
+interface Certification {
+  title: string;
+  issuer: string;
+  year: string;
+}
+
 // Fallback responses for off-topic questions
 const FALLBACK_RESPONSES = [
   "I'm focused on answering questions about Kamran's portfolio. Could you ask something about his skills, projects, or experience?",
@@ -45,28 +64,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Failed to load portfolio data" }, { status: 500 });
     }
 
-//     // Enhanced context with more structured information
-//     const context = `
-// Portfolio Information:
-// -------------------
-// Name: ${portfolioData.name}
-// About: ${portfolioData.about}
-
-// Technical Skills:
-// ${portfolioData.skills.map((skill: string) => `- ${skill}`).join('\n')}
-
-// Projects:
-// ${portfolioData.projects.map((p: any) => `
-// Project: ${p.title}
-// Description: ${p.description}
-// Technologies: ${p.techStack.join(', ')}
-// `).join('\n')}
-
-// Contact Information:
-// - Email: ${portfolioData.contact.email}
-// - LinkedIn: ${portfolioData.contact.linkedin}
-// `;
-      // Enhanced context with more structured information
       const context = `
 Portfolio Information:
 -------------------
@@ -77,13 +74,13 @@ Technical Skills:
 ${portfolioData.skills.map((skill: string) => `- ${skill}`).join('\n')}
 
 Projects:
-${portfolioData.projects.map((p: any) => `- ${p.title}: ${p.description} (Tech: ${p.techStack.join(', ')})`).join('\n')}
+${portfolioData.projects.map((p: PortfolioProject) => `- ${p.title}: ${p.description} (Tech: ${p.techStack.join(', ')})`).join('\n')}
 
 Experience:
-${portfolioData.experience?.map((exp: any) => `- ${exp.role} at ${exp.company} (${exp.duration}): ${exp.description}`).join('\n') || 'None'}
+${portfolioData.experience?.map((exp: Experience) => `- ${exp.role} at ${exp.company} (${exp.duration}): ${exp.description}`).join('\n') || 'None'}
 
 Certifications:
-${portfolioData.certifications?.map((cert: any) => `- ${cert.title}, ${cert.issuer} (${cert.year})`).join('\n') || 'None'}
+${portfolioData.certifications?.map((cert: Certification) => `- ${cert.title}, ${cert.issuer} (${cert.year})`).join('\n') || 'None'}
 
 Resume Summary:
 ${portfolioData.resume?.summary || 'Not provided'}
